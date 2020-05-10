@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertestapplication/geoposition_route.dart';
 import 'package:fluttertestapplication/home_route.dart';
-import 'package:fluttertestapplication/widgets/recorderWidget.dart';
+import 'package:fluttertestapplication/recordList_route.dart';
+import 'package:fluttertestapplication/recorder_route.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,15 +14,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: MyHomePage(title: 'Test app'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  MyHomePage({Key key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -36,7 +35,9 @@ class _MyHomePageState extends State<MyHomePage> {
     else if(index == 1)
       return GeopositionRoute();
     else if(index == 2)
-      return Recorder();
+      return RecorderRoute();
+    else if(index == 3)
+      return RecordListRoute();
   }
 
   void _onItemTapped(int index) {
@@ -48,9 +49,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: _getRoute(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -65,6 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.music_note),
             title: Text('Recording'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            title: Text('Records'),
           ),
         ],
         currentIndex: _selectedIndex,
