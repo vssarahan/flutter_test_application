@@ -35,8 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
       return HomeRoute();
     else if(index == 1)
       return GeopositionRoute();
-    else
-      return HomeRoute();
+    else if(index == 2)
+      return Recorder();
   }
 
   void _onItemTapped(int index) {
@@ -63,8 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
             title: Text('Geoposition'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
+            icon: Icon(Icons.music_note),
+            title: Text('Recording'),
           ),
         ],
         currentIndex: _selectedIndex,
